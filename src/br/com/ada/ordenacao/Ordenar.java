@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Ordenar {
 
@@ -29,11 +30,28 @@ public class Ordenar {
         System.out.println("Lista NAO ordenada: " +lista);
 //        ComparadorDePessoaPorNome comparadorDePessoaPorNome = new ComparadorDePessoaPorNome();
 //        Collections.sort(lista, comparadorDePessoaPorNome);
-        lista.sort(Pessoa.COMPARADOR_POR_IDADE_E_NOME);
+        lista.sort(Pessoa.COMPARADOR_POR_IDADE);
 //        lista.sort(Comparator.comparing(Pessoa::getNome));
         System.out.println("Lista ordenada: " + lista);
 
+
         System.out.println("vinicius.compareTo(maria) = " + vinicius.compareTo(maria));
 
+//        Instant start = Instant.now();
+//        System.out.println(LocalDateTime.now());
+//        try {
+//            metodoQueLevaUmTempo();
+//            System.out.println(LocalDateTime.now());
+//        } finally {
+//            System.out.println("Levou %s ms para executar".formatted(Duration.between(start, Instant.now()).toMillis()));
+//        }
+    }
+
+    private static void metodoQueLevaUmTempo() {
+        try {
+            Thread.sleep(500l);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

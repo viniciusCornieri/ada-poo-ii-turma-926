@@ -1,6 +1,9 @@
 package br.com.ada.ordenacao;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Comparator;
 
 public class Pessoa implements Comparable {
@@ -10,6 +13,9 @@ public class Pessoa implements Comparable {
     public static final Comparator<Pessoa> COMPARADOR_POR_IDADE_E_NOME = Comparator
             .comparing(Pessoa::getDataDeNascimento).reversed()
             .thenComparing(Pessoa::getNome);
+
+    public static final Comparator<Pessoa> COMPARADOR_POR_IDADE = Comparator
+            .comparing(Pessoa::getIdade);
     private final String nome;
 
     private final LocalDate dataDeNascimento;
@@ -51,11 +57,20 @@ public class Pessoa implements Comparable {
         return dataDeNascimento;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public int getIdade() {
+        return Period.between(dataDeNascimento, LocalDate.now()).getYears();
+    }
+
     @Override
     public String toString() {
         return "Pessoa{" +
                 "nome='" + nome + "'," +
                 "dataDeNascimento='" + dataDeNascimento + '\'' +
+                "idade='" + getIdade() + '\'' +
                 '}';
     }
 }

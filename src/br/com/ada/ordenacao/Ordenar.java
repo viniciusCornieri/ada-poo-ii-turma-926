@@ -20,13 +20,13 @@ public class Ordenar {
 
         System.out.println(dia17.compareTo(dia15));
 
-        Pessoa vinicius = new Pessoa("Vinicius", LocalDate.of(1991, Month.DECEMBER, 15));
+        Pessoa vinicius = new Pessoa("Vinicius", LocalDate.of(1991, Month.DECEMBER, 15), "88291073015");
         lista.add(vinicius);
-        Pessoa maria = new Pessoa("Ana", LocalDate.of(1991, Month.DECEMBER, 15));
+        Pessoa maria = new Pessoa("Ana", LocalDate.of(1991, Month.DECEMBER, 15), "41693734052");
         lista.add(maria);
-        lista.add(new Pessoa("Osvaldo", LocalDate.of(1990, Month.APRIL, 10)));
-        lista.add(new Pessoa("Serafim", LocalDate.of(1992, Month.JUNE, 05)));
-        lista.add(new Pessoa("Bruna", LocalDate.of(1991, Month.DECEMBER, 15)));
+        lista.add(new Pessoa("Osvaldo", LocalDate.of(1990, Month.APRIL, 10), "83899011023"));
+        lista.add(new Pessoa("Serafim", LocalDate.of(1992, Month.JUNE, 05), "02758255073"));
+        lista.add(new Pessoa("Bruna", LocalDate.of(1991, Month.DECEMBER, 15), "73104978050"));
         System.out.println("Lista NAO ordenada: " +lista);
 //        ComparadorDePessoaPorNome comparadorDePessoaPorNome = new ComparadorDePessoaPorNome();
 //        Collections.sort(lista, comparadorDePessoaPorNome);

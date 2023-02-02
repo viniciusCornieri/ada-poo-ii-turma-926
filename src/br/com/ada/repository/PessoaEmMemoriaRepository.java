@@ -5,11 +5,19 @@ import br.com.ada.ordenacao.Pessoa;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class PessoaEmMemoriaRepository implements Repository {
 
-    private List<Pessoa> dados = new ArrayList<>();
+    private List<Pessoa> dados;
+
+    public PessoaEmMemoriaRepository(List<Pessoa> dadosIniciais) {
+        this.dados = dadosIniciais;
+    }
+
+    public PessoaEmMemoriaRepository() {
+        this.dados = new ArrayList<>();
+    }
+
     @Override
     public Pessoa salvar(Pessoa pessoa) {
         if (existe(pessoa)) {

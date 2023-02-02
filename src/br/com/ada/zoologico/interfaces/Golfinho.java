@@ -12,4 +12,5 @@ public class Golfinho implements Nadador, Amamentador {
     public String getNome() {
         return nome;
     }
+
 }

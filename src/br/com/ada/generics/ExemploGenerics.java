@@ -3,6 +3,7 @@ package br.com.ada.generics;
 import br.com.ada.ordenacao.Pessoa;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 

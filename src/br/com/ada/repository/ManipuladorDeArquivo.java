@@ -9,60 +9,30 @@ import java.util.List;
 public class ManipuladorDeArquivo {
 
     public static void escreverEmArquivo(List<Pessoa> dados) {
-        ObjectOutputStream escritor = criarFileOutputStream();
-        try {
+        try(OutputStream fileOutputStream = new FileOutputStream("dados_pessoa.txt");
+            ObjectOutputStream escritor = new ObjectOutputStream(fileOutputStream)){
             escritor.writeObject(dados);
+            escritor.flush();
         } catch (IOException e) {
             System.out.println("Erro na hora de escrever no arquivo");
             e.printStackTrace();
-        } finally {
-            try {
-                escritor.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
-
-    }
-
-    private static ObjectOutputStream criarFileOutputStream() {
-        try {
-            OutputStream fileOutputStream = new FileOutputStream("dados_pessoa.txt");
-            return new ObjectOutputStream(fileOutputStream);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static List<Pessoa> lerDoArquivo() {
-        ObjectInputStream objectInputStream = null;
-        try {
-            objectInputStream = criarObjectInputStream();
-        } catch (IOException e) {
-            return new ArrayList<>();
-        }
-
-        try {
+        try (InputStream fileInputStream = new FileInputStream("dados_pessoa.txt");
+             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);) {
             Object objectLido = objectInputStream.readObject();
             return (List<Pessoa>) objectLido;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erro no momento de ler o arquivo");
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                objectInputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            System.out.println("Erro no momento de converter o arquivo para o tipo Java");
+            e.printStackTrace();
         }
-    }
 
-    private static ObjectInputStream criarObjectInputStream() throws IOException {
-        InputStream fileInputStream = new FileInputStream("dados_pessoa.txt");
-        return new ObjectInputStream(fileInputStream);
+        return new ArrayList<>();
     }
 }

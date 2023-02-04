@@ -8,6 +8,6 @@ public class Tubarao implements Comedor, Nadador {
 
     @Override
     public void nadar() {
-        System.out.println(getNome() + "está nadando rápido");
+        System.out.println(getNome() + " está nadando rápido");
     }
 }

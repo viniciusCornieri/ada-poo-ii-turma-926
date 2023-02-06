@@ -1,5 +1,6 @@
 package br.com.ada.generics.sorteador;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -50,12 +51,22 @@ public class Main {
 
         Sorteador<String> sorteador = new Sorteador<>(lista);
         List<Grupo<String>> grupos = sorteador.agrupar(5);
-        grupos.stream()
+//        grupos.stream()
+//                .forEach(System.out::println);
+
+        List<Integer> inteiros = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        Sorteador<Integer> sorteadorDeInteiros = new Sorteador<>(inteiros);
+        List<Grupo<Integer>> gruposInteiros = sorteadorDeInteiros.agrupar(5);
+        gruposInteiros.stream()
                 .forEach(System.out::println);
 
 //        for (Grupo<String> grupo : grupos) {
 //            System.out.println(grupo);
 //        }
+
+        MeuDTO meuDTO = new MeuDTO(1, "primeiro", LocalDate.now());
+        System.out.println(meuDTO);
+
 
     }
 }

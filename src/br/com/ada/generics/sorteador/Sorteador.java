@@ -32,10 +32,10 @@ public class Sorteador<E> {
 
     private void dividirEmGrupos(int quantidadeDeGrupos, List<Grupo<E>> grupos) {
         int indiceGrupoAtual = 0;
-        while(hasNext()) {
+        while (hasNext()) {
             Dupla<E, Integer> elementoEIndiceSorteado = sortear();
-            E elementoSorteado = elementoEIndiceSorteado.getPrimeiro();
-            int indiceSorteado = elementoEIndiceSorteado.getSegundo();
+            E elementoSorteado = elementoEIndiceSorteado.primeiro();
+            int indiceSorteado = elementoEIndiceSorteado.segundo();
             System.out.println("elemento sorteado %s para o indice %s".formatted(elementoSorteado, indiceSorteado));
             grupos.get(indiceGrupoAtual).adicionarNoGrupo(elementoSorteado);
             indiceGrupoAtual++;

@@ -4,15 +4,16 @@ import br.com.ada.ordenacao.Pessoa;
 
 import java.util.List;
 
-public interface Repository {
+//Deixar esse repository e as suas implementações genéricas.
+public interface Repository<T> {
 
-    Pessoa salvar(Pessoa pessoa);
+    T salvar(T entidade);
 
-    void atualizar(Pessoa pessoa);
+    void atualizar(T entidade);
 
-    boolean deletar(String cpf);
+    boolean deletar(String id);
 
-    Pessoa consultar(String cpf);
+    T consultar(String id);
 
-    List<Pessoa> listarTodos();
+    List<T> listarTodos();
 }

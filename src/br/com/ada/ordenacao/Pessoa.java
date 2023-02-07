@@ -1,13 +1,13 @@
 package br.com.ada.ordenacao;
 
+import br.com.ada.repository.Entidade;
+
 import java.io.Serializable;
-import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Comparator;
 
-public class Pessoa implements Comparable, Serializable {
+public class Pessoa implements Comparable, Serializable, Entidade {
 
     public static final Comparator<Pessoa> COMPARADOR_POR_NOME = Comparator.comparing(Pessoa::getNome);
     public static final Comparator<Pessoa> COMPARADOR_POR_NOME_LAMBDA = Comparator.comparing((pessoa) -> pessoa.getNome());
@@ -71,6 +71,11 @@ public class Pessoa implements Comparable, Serializable {
     }
 
     public String getCpf() {
+        return cpf;
+    }
+
+    @Override
+    public String getId() {
         return cpf;
     }
 

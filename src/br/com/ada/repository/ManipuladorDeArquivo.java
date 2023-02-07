@@ -1,15 +1,13 @@
 package br.com.ada.repository;
 
-import br.com.ada.ordenacao.Pessoa;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManipuladorDeArquivo {
 
-    public static void escreverEmArquivo(List<Pessoa> dados) {
-        try(OutputStream fileOutputStream = new FileOutputStream("dados_pessoa.txt");
+    public static <T> void escreverEmArquivo(List<T> dados, String arquivo) {
+        try(OutputStream fileOutputStream = new FileOutputStream(arquivo);
             ObjectOutputStream escritor = new ObjectOutputStream(fileOutputStream)){
             escritor.writeObject(dados);
             escritor.flush();
@@ -20,17 +18,17 @@ public class ManipuladorDeArquivo {
 
     }
 
-    public static List<Pessoa> lerDoArquivo() {
-        try (InputStream fileInputStream = new FileInputStream("dados_pessoa.txt");
+    public static Object lerDoArquivo(String arquivo) {
+
+        try (InputStream fileInputStream = new FileInputStream(arquivo);
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);) {
-            Object objectLido = objectInputStream.readObject();
-            return (List<Pessoa>) objectLido;
+            return objectInputStream.readObject();
         } catch (IOException e) {
-            System.out.println("Erro no momento de ler o arquivo");
-            e.printStackTrace();
+            System.out.println("Erro no momento de ler o arquivo, continuando o processamento");
+//            e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            System.out.println("Erro no momento de converter o arquivo para o tipo Java");
-            e.printStackTrace();
+            System.out.println("Erro no momento de converter o arquivo para o tipo Java, continuando o processamento");
+//            e.printStackTrace();
         }
 
         return new ArrayList<>();

@@ -16,6 +16,9 @@ public class Main {
     // Esse método sorteará os elementos da lista
     // e adicionará nos grupos até que não tenham mais elementos.
     // Após terminar o sorteio irá retornar a lista dos grupos sorteados.
+
+    // Adicionar novas formas de se sortear a lista, além da forma randômica.
+    // Adicionar uma forma de sortear sequencialmente crescente e outra decrescente;
     public static void main(String[] args) {
 
 //        ThreadLocalRandom.current().nextInt(1000); // 0 - 999
@@ -49,14 +52,14 @@ public class Main {
                 "Victor Henrique Martines"
         ));
 
-        Sorteador<String> sorteador = new Sorteador<>(lista);
-        List<Grupo<String>> grupos = sorteador.agrupar(5);
-//        grupos.stream()
-//                .forEach(System.out::println);
+        Agrupador<String> agrupador = new Agrupador<>(lista);
+        List<Grupo<String>> grupos = agrupador.agrupar(5);
+        grupos.stream()
+                .forEach(System.out::println);
 
         List<Integer> inteiros = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
-        Sorteador<Integer> sorteadorDeInteiros = new Sorteador<>(inteiros);
-        List<Grupo<Integer>> gruposInteiros = sorteadorDeInteiros.agrupar(5);
+        Agrupador<Integer> agrupadorDeInteiros = new Agrupador<>(inteiros);
+        List<Grupo<Integer>> gruposInteiros = agrupadorDeInteiros.agrupar(5);
         gruposInteiros.stream()
                 .forEach(System.out::println);
 

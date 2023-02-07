@@ -3,6 +3,9 @@ package br.com.ada.generics;
 import br.com.ada.ordenacao.Pessoa;
 
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +48,10 @@ public class ExemploGenerics {
         BigDecimal menorBD = menor(bdUm, bdDoze);
         System.out.println("O maior BigDecimal é: " + maiorBD);
         System.out.println("O menor BigDecimal é: " + menorBD);
+
+        LocalDateTime d1 = LocalDateTime.parse("2023-02-01T12:00:00.000");
+        LocalDateTime d2 = LocalDateTime.parse("2023-02-01T11:59:59.999");
+        System.out.println(Duration.between(d1, d2).toDays() + 1);
     }
 
     private static <T extends Comparable> T menor(T primeiro, T segundo) {

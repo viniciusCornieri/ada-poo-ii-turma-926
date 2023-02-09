@@ -7,8 +7,8 @@ public class Agrupador<E> {
 
     private final Sorteador<E> sorteador;
 
-    public Agrupador(List<E> lista) {
-        sorteador = new SorteadorMediano<>(lista);
+    public Agrupador(Sorteador<E> sorteador) {
+        this.sorteador = sorteador;
     }
 
     public List<Grupo<E>> agrupar(int quantidadeDeGrupos) {

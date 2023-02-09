@@ -1,4 +1,7 @@
-package br.com.ada.repository;
+package br.com.ada.projeto.persistence.memoria;
+
+import br.com.ada.projeto.model.Entidade;
+import br.com.ada.projeto.persistence.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +9,6 @@ import java.util.List;
 public class RepositorioEmMemoriaGenerico<T extends Entidade> implements Repository<T> {
 
     private final List<T> dados;
-
-    public RepositorioEmMemoriaGenerico(List<T> dadosIniciais) {
-        this.dados = dadosIniciais;
-    }
 
     public RepositorioEmMemoriaGenerico() {
         this.dados = new ArrayList<>();

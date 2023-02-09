@@ -1,4 +1,4 @@
-package br.com.ada.repository;
+package br.com.ada.projeto.persistence;
 
 import br.com.ada.ordenacao.Pessoa;
 

@@ -1,5 +1,6 @@
 package br.com.ada.generics.sorteador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Sorteador<E> {
@@ -7,7 +8,7 @@ public abstract class Sorteador<E> {
     private final List<E> lista;
 
     public Sorteador(List<E> lista) {
-        this.lista = lista;
+        this.lista = new ArrayList<>(lista);
     }
 
     public Dupla<E, Integer> sortear() {

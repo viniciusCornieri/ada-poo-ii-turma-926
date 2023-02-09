@@ -23,7 +23,7 @@ public class Main {
 
 //        ThreadLocalRandom.current().nextInt(1000); // 0 - 999
 
-        List<String> lista = new ArrayList<>(List.of(
+        List<String> lista = List.of(
                 "Bárbara Fernanda Ayres Da Silva",
                 "Bruno De Oliveira",
                 "Guilherme Costa E Silva",
@@ -50,15 +50,16 @@ public class Main {
                 "Ruan Derlan Sombra Oliveira",
                 "Thiago Miguel Lapazini",
                 "Victor Henrique Martines"
-        ));
-
-        Agrupador<String> agrupador = new Agrupador<>(lista);
+        );
+        Sorteador<String> sorteador = new SorteadorAleatorio<>(lista);
+        Agrupador<String> agrupador = new Agrupador<>(sorteador);
         List<Grupo<String>> grupos = agrupador.agrupar(5);
         grupos.stream()
                 .forEach(System.out::println);
 
         List<Integer> inteiros = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
-        Agrupador<Integer> agrupadorDeInteiros = new Agrupador<>(inteiros);
+        Sorteador<Integer> sorteadorDeInteiros = new SorteadorAleatorio<>(inteiros);
+        Agrupador<Integer> agrupadorDeInteiros = new Agrupador<>(sorteadorDeInteiros);
         List<Grupo<Integer>> gruposInteiros = agrupadorDeInteiros.agrupar(5);
         gruposInteiros.stream()
                 .forEach(System.out::println);

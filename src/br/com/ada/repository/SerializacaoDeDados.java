@@ -1,12 +1,15 @@
 package br.com.ada.repository;
 
-import br.com.ada.ordenacao.Livro;
 import br.com.ada.ordenacao.Pessoa;
+import br.com.ada.projeto.model.Livro;
+import br.com.ada.projeto.persistence.Repository;
+import br.com.ada.projeto.persistence.arquivo.LivroEmArquivoRepository;
+import br.com.ada.projeto.persistence.arquivo.ManipuladorDeArquivo;
+import br.com.ada.projeto.persistence.arquivo.ManipuladorDeArquivoComObjectIOStream;
+import br.com.ada.projeto.persistence.memoria.LivroEmMemoriaRepository;
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SerializacaoDeDados {
 
@@ -18,13 +21,15 @@ public class SerializacaoDeDados {
 //
 //        ManipuladorDeArquivo.escreverEmArquivo(lista);
 //        List<Pessoa> pessoas = ManipuladorDeArquivo.lerDoArquivo();
-        Repository repositorioDePessoas = new PessoaEmArquivoRepository();
-//        repositorioDePessoas.atualizar(vinicius);
+        ManipuladorDeArquivo manipuladorDeArquivoDePessoas = new ManipuladorDeArquivoComObjectIOStream("dados_pessoa.txt");
+        Repository<Pessoa> repositorioDePessoas = new PessoaEmArquivoRepository(manipuladorDeArquivoDePessoas, new PessoaEmMemoriaRepository());
+//        repositorioDePessoas.salvar(vinicius);
 //        repositorioDePessoas.salvar(ana);
         System.out.println(repositorioDePessoas.listarTodos());
 
         Livro livro = new Livro("O hobbit", "12345");
-        Repository<Livro> livroRepository = new LivroEmArquivoRepository();
+        ManipuladorDeArquivo manipuladorDeArquivoDeLivros = new ManipuladorDeArquivoComObjectIOStream("livros.txt");
+        Repository<Livro> livroRepository = new LivroEmArquivoRepository(manipuladorDeArquivoDeLivros, new LivroEmMemoriaRepository());
 //        livroRepository.salvar(livro);
         System.out.println(livroRepository.listarTodos());
     }

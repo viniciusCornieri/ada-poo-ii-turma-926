@@ -1,12 +1,17 @@
-package br.com.ada.repository;
+package br.com.ada.projeto.persistence.arquivo;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
-public class ManipuladorDeArquivo {
+public class ManipuladorDeArquivoComObjectIOStream implements ManipuladorDeArquivo {
 
-    public static <T> void escreverEmArquivo(List<T> dados, String arquivo) {
+    private final String arquivo;
+
+    public ManipuladorDeArquivoComObjectIOStream(String arquivo) {
+        this.arquivo = arquivo;
+    }
+
+    public void escreverNoArquivo(Object dados) {
         try(OutputStream fileOutputStream = new FileOutputStream(arquivo);
             ObjectOutputStream escritor = new ObjectOutputStream(fileOutputStream)){
             escritor.writeObject(dados);
@@ -18,7 +23,7 @@ public class ManipuladorDeArquivo {
 
     }
 
-    public static Object lerDoArquivo(String arquivo) {
+    public Object lerDoArquivo() {
 
         try (InputStream fileInputStream = new FileInputStream(arquivo);
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);) {

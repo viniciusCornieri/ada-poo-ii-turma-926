@@ -1,6 +1,6 @@
 package br.com.ada.ordenacao;
 
-import br.com.ada.repository.Entidade;
+import br.com.ada.projeto.model.Entidade;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -8,7 +8,7 @@ import java.time.Period;
 import java.util.Comparator;
 
 public class Pessoa implements Comparable, Serializable, Entidade {
-
+    private static final long serialVersionUID = 1L;
     public static final Comparator<Pessoa> COMPARADOR_POR_NOME = Comparator.comparing(Pessoa::getNome);
     public static final Comparator<Pessoa> COMPARADOR_POR_NOME_LAMBDA = Comparator.comparing((pessoa) -> pessoa.getNome());
     public static final Comparator<Pessoa> COMPARADOR_POR_IDADE_E_NOME = Comparator

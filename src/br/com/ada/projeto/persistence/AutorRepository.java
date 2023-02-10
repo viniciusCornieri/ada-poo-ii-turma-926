@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface AutorRepository extends Repository<Autor> {
 
-    List<Autor> buscarPorNacionalidade(String nacionalidade);
+    List<Autor> consultarPorNacionalidade(String nacionalidade);
 }

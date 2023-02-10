@@ -1,9 +1,7 @@
 package br.com.ada.projeto.persistence.arquivo;
 
 import br.com.ada.projeto.model.Autor;
-import br.com.ada.projeto.model.Livro;
 import br.com.ada.projeto.persistence.AutorRepository;
-import br.com.ada.projeto.persistence.Repository;
 
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class AutorEmArquivoRepository extends RepositorioEmArquivoGenerico<Autor
     }
 
     @Override
-    public List<Autor> buscarPorNacionalidade(String nacionalidade) {
-        return cache.buscarPorNacionalidade(nacionalidade);
+    public List<Autor> consultarPorNacionalidade(String nacionalidade) {
+        return cache.consultarPorNacionalidade(nacionalidade);
     }
 }

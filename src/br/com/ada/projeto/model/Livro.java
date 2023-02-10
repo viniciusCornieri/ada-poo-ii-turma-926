@@ -12,9 +12,10 @@ public class Livro implements Entidade {
 
     private Autor autor;
 
-    public Livro(String titulo, String isbn) {
+    public Livro(String titulo, String isbn, Autor autor) {
         this.titulo = titulo;
         this.isbn = isbn;
+        this.autor = autor;
     }
 
     @Override

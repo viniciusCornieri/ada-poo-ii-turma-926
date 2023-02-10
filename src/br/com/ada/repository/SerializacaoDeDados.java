@@ -1,6 +1,7 @@
 package br.com.ada.repository;
 
 import br.com.ada.ordenacao.Pessoa;
+import br.com.ada.projeto.model.Autor;
 import br.com.ada.projeto.model.Livro;
 import br.com.ada.projeto.persistence.Repository;
 import br.com.ada.projeto.persistence.arquivo.LivroEmArquivoRepository;
@@ -27,7 +28,7 @@ public class SerializacaoDeDados {
 //        repositorioDePessoas.salvar(ana);
         System.out.println(repositorioDePessoas.listarTodos());
 
-        Livro livro = new Livro("O hobbit", "12345");
+        Livro livro = new Livro("O hobbit", "12345", new Autor("Tolkien", "Inglaterra"));
         ManipuladorDeArquivo manipuladorDeArquivoDeLivros = new ManipuladorDeArquivoComObjectIOStream("livros.txt");
         Repository<Livro> livroRepository = new LivroEmArquivoRepository(manipuladorDeArquivoDeLivros, new LivroEmMemoriaRepository());
 //        livroRepository.salvar(livro);

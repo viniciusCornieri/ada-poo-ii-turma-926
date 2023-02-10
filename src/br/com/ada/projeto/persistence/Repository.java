@@ -1,6 +1,7 @@
 package br.com.ada.projeto.persistence;
 
 import br.com.ada.ordenacao.Pessoa;
+import br.com.ada.projeto.business.exception.RegistroJaExistenteException;
 
 import java.util.List;
 

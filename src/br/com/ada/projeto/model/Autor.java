@@ -4,7 +4,7 @@ public class Autor implements Entidade {
 
     private static final long serialVersionUID = 1L;
 
-    public String nome;
+    public final String nome;
 
     public String nacionalidade;
 
@@ -20,6 +20,10 @@ public class Autor implements Entidade {
 
     public String getNacionalidade() {
         return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
     }
 
     @Override

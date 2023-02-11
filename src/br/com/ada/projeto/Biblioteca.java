@@ -8,10 +8,10 @@ import br.com.ada.projeto.persistence.AutorRepository;
 import br.com.ada.projeto.persistence.Repository;
 import br.com.ada.projeto.persistence.memoria.AutorEmMemoriaRepository;
 import br.com.ada.projeto.persistence.memoria.LivroEmMemoriaRepository;
-import br.com.ada.projeto.persistence.memoria.RepositorioEmMemoriaGenerico;
 import br.com.ada.projeto.view.MenuComSubmenus;
-import br.com.ada.projeto.view.MenuGeral;
-import br.com.ada.projeto.view.autor.MenuAdicionarAutor;
+import br.com.ada.projeto.view.MenuGeralFactory;
+import br.com.ada.projeto.view.autor.MenuDeAutoresFactory;
+import br.com.ada.projeto.view.livro.MenuDeLivrosFactory;
 
 public class Biblioteca {
 
@@ -40,12 +40,10 @@ public class Biblioteca {
         // 4. Consultar autores por nacionalidade
         // 5. Listar todos
 
-        MenuGeral menuGeral = new MenuGeral();
-        MenuComSubmenus menuDeAutores = new MenuComSubmenus("Menu de Autores");
-        menuDeAutores.adicionarSubMenu(new MenuAdicionarAutor());
-        menuGeral.adicionarSubMenu(menuDeAutores);
-        menuGeral.adicionarSubMenu(new MenuComSubmenus("Menu de Livros"));
-        menuGeral.adicionarSubMenu(new MenuComSubmenus("Menu de Empréstimos"));
+        MenuDeAutoresFactory menuDeAutoresFactory = new MenuDeAutoresFactory(gerenciadorDeAutor);
+        MenuDeLivrosFactory menuDeLivrosFactory = new MenuDeLivrosFactory(gerenciadorDeAutor, gerenciadorDeLivro);
+
+        MenuComSubmenus menuGeral = new MenuGeralFactory(menuDeAutoresFactory, menuDeLivrosFactory).create();
         menuGeral.agir();
 
     }

@@ -9,6 +9,7 @@ import java.util.List;
 
 public class GerenciadorDeLivro {
 
+    public static final String LIVRO_DESCRICAO_DA_CLASSE = "Livro";
     private final Repository<Livro> repositoryDeLivros;
 
     public GerenciadorDeLivro(Repository<Livro> repositoryDeLivros) {
@@ -18,7 +19,7 @@ public class GerenciadorDeLivro {
     public Livro adicionarLivro(String titulo, String isbn, Autor autor) {
 
         if (existeLivro(isbn)) {
-            throw new RegistroJaExistenteException("Livro", isbn);
+            throw new RegistroJaExistenteException(LIVRO_DESCRICAO_DA_CLASSE, isbn);
         }
 
         Livro novoLivro = new Livro(titulo, isbn, autor);
@@ -26,7 +27,7 @@ public class GerenciadorDeLivro {
         return novoLivro;
     }
 
-    private boolean existeLivro(String isbn) {
+    public boolean existeLivro(String isbn) {
         return repositoryDeLivros.consultar(isbn) != null;
     }
 

@@ -23,6 +23,13 @@ public class Biblioteca {
         GerenciadorDeAutor gerenciadorDeAutor = new GerenciadorDeAutor(repositorioDeAutor);
 
         Autor autor = gerenciadorDeAutor.adicionarAutor("J. R. R. Tolkien", "Inglaterra");
+        gerenciadorDeAutor.adicionarAutor("Machado de Assis", "Brasil");
+        gerenciadorDeAutor.adicionarAutor("J. K. Rowling", "Inglaterra");
+        gerenciadorDeAutor.adicionarAutor("Shakespeare", "Inglaterra");
+        gerenciadorDeAutor.adicionarAutor("Clarice Lispector", "Ucrania");
+        gerenciadorDeAutor.adicionarAutor("Paulo Coelho", "Brasil");
+        gerenciadorDeAutor.adicionarAutor("Saramago", "Portugal");
+
         gerenciadorDeLivro.adicionarLivro("O Hobbit", "123456", autor);
 
         gerenciadorDeLivro.listarTodos()

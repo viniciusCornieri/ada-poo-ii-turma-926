@@ -34,4 +34,9 @@ public class GerenciadorDeLivro {
     public List<Livro> listarTodos() {
         return repositoryDeLivros.listarTodos();
     }
+
+    public Paginavel<Livro> listarComPaginacao(int maximoDeElementosPorPagina) {
+        return new ListaPaginavel<>(listarTodos(), maximoDeElementosPorPagina);
+    }
+
 }

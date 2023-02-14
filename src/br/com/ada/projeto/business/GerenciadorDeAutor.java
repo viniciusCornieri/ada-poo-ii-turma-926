@@ -57,4 +57,9 @@ public class GerenciadorDeAutor {
     public List<Autor> listarTodos() {
         return repository.listarTodos();
     }
+
+    public Paginavel<Autor> listarComPaginacao(int maximoDeElementosPorPagina) {
+        return new ListaPaginavel<>(listarTodos(), maximoDeElementosPorPagina);
+    }
+
 }

@@ -25,8 +25,12 @@ public abstract class Submenu implements Menu {
     public abstract void acao();
 
     private void exibirComSeparadores() {
-        System.out.println(SEPARADOR);
+        exibirSeparador();
         exibir();
+        exibirSeparador();
+    }
+
+    protected static void exibirSeparador() {
         System.out.println(SEPARADOR);
     }
 

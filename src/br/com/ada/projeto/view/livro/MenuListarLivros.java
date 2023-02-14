@@ -4,6 +4,8 @@ import br.com.ada.projeto.business.GerenciadorDeAutor;
 import br.com.ada.projeto.business.GerenciadorDeLivro;
 import br.com.ada.projeto.model.Autor;
 import br.com.ada.projeto.model.Livro;
+import br.com.ada.projeto.view.ConstanteDePaginacao;
+import br.com.ada.projeto.view.MenuDePaginacao;
 import br.com.ada.projeto.view.Submenu;
 
 import java.util.List;
@@ -20,15 +22,7 @@ public class MenuListarLivros extends Submenu {
 
     @Override
     public void acao() {
-        List<Livro> autores = gerenciadorDeLivro.listarTodos();
-
-        if (autores.isEmpty()) {
-            System.out.println("Não existem livros cadastrados!");
-            return;
-        }
-
-        System.out.println("Livros encontrados: ");
-        autores.forEach(System.out::println);
-
+        MenuDePaginacao<Livro> menuDePaginacao = new MenuDePaginacao<>("Livros", gerenciadorDeLivro.listarComPaginacao(ConstanteDePaginacao.MAXIMO_DE_ELEMENTOS_POR_PAGINA));
+        menuDePaginacao.paginar();
     }
 }

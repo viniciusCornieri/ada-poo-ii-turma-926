@@ -1,13 +1,13 @@
 package br.com.ada.repository;
 
 import br.com.ada.ordenacao.Pessoa;
-import br.com.ada.projeto.model.Autor;
-import br.com.ada.projeto.model.Livro;
-import br.com.ada.projeto.persistence.Repository;
-import br.com.ada.projeto.persistence.arquivo.LivroEmArquivoRepository;
-import br.com.ada.projeto.persistence.arquivo.ManipuladorDeArquivo;
-import br.com.ada.projeto.persistence.arquivo.ManipuladorDeArquivoComObjectIOStream;
-import br.com.ada.projeto.persistence.memoria.LivroEmMemoriaRepository;
+import br.com.ada.projeto.biblioteca.model.Autor;
+import br.com.ada.projeto.biblioteca.model.Livro;
+import br.com.ada.projeto.biblioteca.persistence.Repository;
+import br.com.ada.projeto.biblioteca.persistence.arquivo.LivroEmArquivoRepository;
+import br.com.ada.projeto.biblioteca.persistence.arquivo.ManipuladorDeArquivo;
+import br.com.ada.projeto.biblioteca.persistence.arquivo.ManipuladorDeArquivoComObjectIOStream;
+import br.com.ada.projeto.biblioteca.persistence.memoria.LivroEmMemoriaRepository;
 
 import java.time.LocalDate;
 import java.time.Month;

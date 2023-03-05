@@ -1,6 +1,6 @@
 package br.com.ada.ordenacao;
 
-import br.com.ada.projeto.model.Entidade;
+import br.com.ada.projeto.biblioteca.model.Entidade;
 
 import java.io.Serializable;
 import java.time.LocalDate;

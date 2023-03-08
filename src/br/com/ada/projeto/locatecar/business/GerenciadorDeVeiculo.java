@@ -50,8 +50,8 @@ public class GerenciadorDeVeiculo {
         return veiculo;
     }
 
-    public boolean deletar(String nome) {
-        return repository.deletar(nome);
+    public boolean deletar(String placa) {
+        return repository.deletar(placa);
     }
 
     public Veiculo consultarPorPlaca(String placa) {

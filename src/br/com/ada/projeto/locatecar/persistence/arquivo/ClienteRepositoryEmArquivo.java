@@ -6,17 +6,17 @@ import br.com.ada.projeto.locatecar.persistence.Repository;
 
 import java.util.List;
 
-public class ClienteRepositoryEmArquivo extends RepositorioEmArquivoGenerico<String, Cliente> implements ClienteRepository {
+public class ClienteRepositoryEmArquivo<T extends Cliente> extends RepositorioEmArquivoGenerico<String, T> implements ClienteRepository<T> {
 
-    private final ClienteRepository cache;
+    private final ClienteRepository<T> cache;
 
-    public ClienteRepositoryEmArquivo(ManipuladorDeArquivo manipuladorDeArquivo, ClienteRepository cache) {
+    public ClienteRepositoryEmArquivo(ManipuladorDeArquivo manipuladorDeArquivo, ClienteRepository<T> cache) {
         super(manipuladorDeArquivo, cache);
         this.cache = cache;
     }
 
     @Override
-    public List<Cliente> buscarPorNome(String parteDoNome) {
+    public List<T> buscarPorNome(String parteDoNome) {
         return cache.buscarPorNome(parteDoNome);
     }
 }

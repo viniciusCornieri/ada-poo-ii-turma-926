@@ -43,9 +43,9 @@ public class MenuAdicionarVeiculo extends Submenu {
             System.out.println(gerenciadorDeTipoVeiculo.getDescricaoDaEntidade() + " não encontrado. Tente novamente.");
             return;
         }
-        Veiculo veiculoAlterado = gerenciadorDeVeiculo.adicionar(placa, modelo, tipoVeiculo);
+        Veiculo veiculoAdicionado = gerenciadorDeVeiculo.adicionar(placa, modelo, tipoVeiculo);
 
         System.out.println(gerenciadorDeVeiculo.getDescricaoDaEntidade() + " alterado com sucesso");
-        System.out.println(veiculoAlterado);
+        System.out.println(veiculoAdicionado);
     }
 }

@@ -4,8 +4,11 @@ public abstract class Cliente implements Entidade<String> {
 
     private String nome;
 
-    public Cliente(String nome) {
+    private final TipoCliente tipoCliente;
+
+    public Cliente(String nome, TipoCliente tipoCliente) {
         this.nome = nome;
+        this.tipoCliente = tipoCliente;
     }
 
     public String getNome() {
@@ -14,5 +17,9 @@ public abstract class Cliente implements Entidade<String> {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public TipoCliente getTipoCliente() {
+        return tipoCliente;
     }
 }

@@ -40,7 +40,7 @@ public class GerenciadorDeTipoVeiculo {
     }
 
     public TipoVeiculo editar(String descricao, BigDecimal tarifa) {
-
+        descricao = descricao.toUpperCase();
         TipoVeiculo tipoVeiculo = consultarPorDescricao(descricao);
         boolean veiculoNaoExiste = tipoVeiculo == null;
 
@@ -62,7 +62,7 @@ public class GerenciadorDeTipoVeiculo {
     }
 
     public TipoVeiculo consultarPorDescricao(String descricao) {
-        return repository.consultar(descricao);
+        return repository.consultar(descricao.toUpperCase());
     }
 
     public boolean existe(String descricao) {

@@ -5,7 +5,7 @@ public class ClientePessoaFisica extends Cliente {
     private String cpf;
 
     public ClientePessoaFisica(String nome, String cpf) {
-        super(nome);
+        super(nome, TipoCliente.PESSOA_FISICA);
         this.cpf = cpf;
     }
 
@@ -18,7 +18,8 @@ public class ClientePessoaFisica extends Cliente {
     public String toString() {
         return "ClientePessoaFisica{" +
                 "cpf='" + cpf + "'," +
-                "nome='" + getNome() + '\'' +
+                "nome='" + getNome() + "'," +
+                "tipoCliente='" + getTipoCliente() + "'" +
                 '}';
     }
 }

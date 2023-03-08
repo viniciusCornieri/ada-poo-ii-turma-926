@@ -24,7 +24,7 @@ public class MenuDePaginacao<T> {
 
         Pagina<T> primeiraPagina = paginacao.getPagina(0);
         if (primeiraPagina.elementosDaPagina().isEmpty()) {
-            System.out.printf("Não existem %s cadastrados!%n", descricaoDoTipo);
+            System.out.printf("Não existem %s cadastrados com esse filtro!%n", descricaoDoTipo);
             return;
         }
 

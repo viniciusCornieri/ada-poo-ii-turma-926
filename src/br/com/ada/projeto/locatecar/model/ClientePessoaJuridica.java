@@ -5,7 +5,7 @@ public class ClientePessoaJuridica extends Cliente {
     private String cnpj;
 
     public ClientePessoaJuridica(String nome, String cnpj) {
-        super(nome);
+        super(nome, TipoCliente.PESSOA_JURIDICA);
         this.cnpj = cnpj;
     }
 
@@ -18,7 +18,8 @@ public class ClientePessoaJuridica extends Cliente {
     public String toString() {
         return "ClientePessoaJuridica{" +
                 "cnpj='" + cnpj + "'," +
-                "nome='" + getNome() + '\'' +
+                "nome='" + getNome() + "'," +
+                "tipoCliente='" + getTipoCliente() + "'" +
                 '}';
     }
 

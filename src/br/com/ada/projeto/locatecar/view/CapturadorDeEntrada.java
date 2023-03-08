@@ -21,7 +21,7 @@ public class CapturadorDeEntrada {
     public static String capturarStringDentreAsPossiveis(String nomeCampo, List<String> possibilidades) {
         while (true) {
             String entrada = capturarString(nomeCampo + " %s".formatted(possibilidades));
-            if (possibilidades.contains(entrada)) {
+            if (possibilidades.stream().anyMatch(p -> p.equalsIgnoreCase(entrada))) {
                 return entrada;
             }
             System.out.printf("Não é uma entrada válida, somente os valores %s são aceitos.%n", possibilidades);

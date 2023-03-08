@@ -4,8 +4,8 @@ import br.com.ada.projeto.locatecar.model.Cliente;
 
 import java.util.List;
 
-public interface ClienteRepository extends Repository<String, Cliente> {
+public interface ClienteRepository<T extends Cliente> extends Repository<String, T> {
 
-    List<Cliente> buscarPorNome(String parteDoNome);
+    List<T> buscarPorNome(String parteDoNome);
 
 }

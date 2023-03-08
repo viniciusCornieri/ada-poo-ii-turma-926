@@ -23,7 +23,7 @@ public class MenuDeletarVeiculo extends Submenu {
         if (foiDeletado) {
             System.out.println(gerenciadorDeVeiculo.getDescricaoDaEntidade() + " deletado com sucesso!");
         } else {
-            System.out.printf("Não foi encontrado um %s com esse nome para deletar.", gerenciadorDeVeiculo.getDescricaoDaEntidade());
+            System.out.printf("Não foi encontrado um %s com essa placa para deletar.", gerenciadorDeVeiculo.getDescricaoDaEntidade());
         }
     }
 }

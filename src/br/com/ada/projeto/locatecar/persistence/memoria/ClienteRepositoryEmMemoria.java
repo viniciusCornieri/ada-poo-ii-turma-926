@@ -5,11 +5,11 @@ import br.com.ada.projeto.locatecar.persistence.ClienteRepository;
 
 import java.util.List;
 
-public class ClienteRepositoryEmMemoria extends RepositorioEmMemoriaGenerico<String, Cliente> implements ClienteRepository {
+public class ClienteRepositoryEmMemoria<T extends Cliente> extends RepositorioEmMemoriaGenerico<String, T> implements ClienteRepository<T> {
 
 
     @Override
-    public List<Cliente> buscarPorNome(String parteDoNome) {
+    public List<T> buscarPorNome(String parteDoNome) {
         return listarTodos().stream()
                             .filter(c -> c.getNome().contains(parteDoNome))
                             .toList();

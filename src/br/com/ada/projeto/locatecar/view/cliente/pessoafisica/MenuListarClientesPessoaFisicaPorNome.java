@@ -12,13 +12,13 @@ public class MenuListarClientesPessoaFisicaPorNome extends Submenu {
     private final GerenciadorDeClientePessoaFisica gerenciadorDeClientePessoaFisica;
 
     public MenuListarClientesPessoaFisicaPorNome(GerenciadorDeClientePessoaFisica gerenciadorDeClientePessoaFisica) {
-        super("Listar " + gerenciadorDeClientePessoaFisica .getDescricaoPluralDaEntidade() + " por nome");
+        super("Listar " + gerenciadorDeClientePessoaFisica .getDescricaoPluralDaEntidade() + " por parte do nome");
         this.gerenciadorDeClientePessoaFisica = gerenciadorDeClientePessoaFisica;
     }
 
     @Override
     public void acao() {
-        String nome = CapturadorDeEntrada.capturarString("o nome");
+        String nome = CapturadorDeEntrada.capturarString("parte do nome");
 
         Paginavel<ClientePessoaFisica> clientePessoaFisicaPaginavel = gerenciadorDeClientePessoaFisica.listarComPaginacaoPorNome(ConstanteDePaginacao.MAXIMO_DE_ELEMENTOS_POR_PAGINA, nome);
         MenuDePaginacao<ClientePessoaFisica> menuDePaginacao = new MenuDePaginacao<>(gerenciadorDeClientePessoaFisica.getDescricaoPluralDaEntidade(), clientePessoaFisicaPaginavel);

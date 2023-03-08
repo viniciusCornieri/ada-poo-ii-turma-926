@@ -1,9 +1,11 @@
 package br.com.ada.projeto.locatecar;
 
 import br.com.ada.projeto.locatecar.business.GerenciadorDeClientePessoaFisica;
+import br.com.ada.projeto.locatecar.business.GerenciadorDeClientePessoaJuridica;
 import br.com.ada.projeto.locatecar.business.GerenciadorDeTipoVeiculo;
 import br.com.ada.projeto.locatecar.business.GerenciadorDeVeiculo;
 import br.com.ada.projeto.locatecar.model.ClientePessoaFisica;
+import br.com.ada.projeto.locatecar.model.ClientePessoaJuridica;
 import br.com.ada.projeto.locatecar.persistence.ClienteRepository;
 import br.com.ada.projeto.locatecar.persistence.TipoVeiculoRepository;
 import br.com.ada.projeto.locatecar.persistence.VeiculoRepository;
@@ -17,6 +19,7 @@ import br.com.ada.projeto.locatecar.persistence.memoria.VeiculoRepositoryEmMemor
 import br.com.ada.projeto.locatecar.view.Menu;
 import br.com.ada.projeto.locatecar.view.MenuGeralFactory;
 import br.com.ada.projeto.locatecar.view.cliente.pessoafisica.MenuDeClientesPessoaFisicaFactory;
+import br.com.ada.projeto.locatecar.view.cliente.pessoajuridica.MenuDeClientesPessoaJuridicaFactory;
 import br.com.ada.projeto.locatecar.view.veiculo.MenuDeVeiculosFactory;
 
 import java.math.BigDecimal;
@@ -36,7 +39,11 @@ public class LocateCar {
         GerenciadorDeClientePessoaFisica gerenciadorDeClientePessoaFisica = new GerenciadorDeClientePessoaFisica(pessoaFisicaRepository);
         MenuDeClientesPessoaFisicaFactory menuDeClientesPessoaFisicaFactory = new MenuDeClientesPessoaFisicaFactory(gerenciadorDeClientePessoaFisica);
 
-        Menu menuGeral = new MenuGeralFactory(menuDeVeiculosFactory, menuDeClientesPessoaFisicaFactory).create();
+        ClienteRepository<ClientePessoaJuridica> pessoaJuridicaRepository = new ClienteRepositoryEmArquivo<>(new ManipuladorDeArquivoComObjectIOStream("clientes_pessoa_juridica.txt"), new ClienteRepositoryEmMemoria<>());
+        GerenciadorDeClientePessoaJuridica gerenciadorDeClientePessoaJuridica = new GerenciadorDeClientePessoaJuridica(pessoaJuridicaRepository);
+        MenuDeClientesPessoaJuridicaFactory menuDeClientesPessoaJuridicaFactory = new MenuDeClientesPessoaJuridicaFactory(gerenciadorDeClientePessoaJuridica);
+
+        Menu menuGeral = new MenuGeralFactory(menuDeVeiculosFactory, menuDeClientesPessoaFisicaFactory, menuDeClientesPessoaJuridicaFactory).create();
         menuGeral.agir();
 
     }

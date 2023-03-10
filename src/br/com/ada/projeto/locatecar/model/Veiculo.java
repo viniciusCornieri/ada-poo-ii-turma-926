@@ -36,6 +36,14 @@ public class Veiculo implements Entidade<String> {
         this.tipo = tipo;
     }
 
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+
     @Override
     public String toString() {
         return "Veiculo{" +

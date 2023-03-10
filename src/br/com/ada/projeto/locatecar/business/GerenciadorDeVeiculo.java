@@ -2,6 +2,7 @@ package br.com.ada.projeto.locatecar.business;
 
 import br.com.ada.projeto.locatecar.business.exception.RegistroJaExistenteException;
 import br.com.ada.projeto.locatecar.business.exception.RegistroNaoEncontradoException;
+import br.com.ada.projeto.locatecar.business.exception.VeiculoJaEstaAlugadoException;
 import br.com.ada.projeto.locatecar.business.paginacao.ListaPaginavel;
 import br.com.ada.projeto.locatecar.business.paginacao.Paginavel;
 import br.com.ada.projeto.locatecar.model.TipoVeiculo;
@@ -70,11 +71,33 @@ public class GerenciadorDeVeiculo {
         return new ListaPaginavel<>(listarTodos(), maximoDeElementosPorPagina);
     }
 
+    public Paginavel<Veiculo> listarDisponiveisComPaginacao(int maximoDeElementosPorPagina) {
+        return new ListaPaginavel<>(listarTodosDisponiveis(), maximoDeElementosPorPagina);
+    }
+
+    private List<Veiculo> listarTodosDisponiveis() {
+        return repository.listarVeiculosDisponiveis();
+    }
+
     public String getDescricaoDaEntidade() {
         return DESCRICAO_ENTIDADE;
     }
 
     public String getDescricaoPluralDaEntidade() {
         return DESCRICAO_PLURAL_PLURAL;
+    }
+
+    public void alugar(Veiculo veiculo) {
+        if (!veiculo.isDisponivel()) {
+            throw new VeiculoJaEstaAlugadoException(veiculo);
+        }
+
+        veiculo.setDisponivel(false);
+        repository.atualizar(veiculo);
+    }
+
+    public void devolver(Veiculo veiculo) {
+        veiculo.setDisponivel(true);
+        repository.atualizar(veiculo);
     }
 }

@@ -23,6 +23,7 @@ public class MenuDeVeiculosFactory implements MenuFactory {
         menuDeVeiculos.adicionarSubMenu(new MenuEditarVeiculo(gerenciadorDeVeiculo, gerenciadorDeTipoVeiculo));
         menuDeVeiculos.adicionarSubMenu(new MenuDeletarVeiculo(gerenciadorDeVeiculo));
         menuDeVeiculos.adicionarSubMenu(new MenuListarVeiculos(gerenciadorDeVeiculo));
+        menuDeVeiculos.adicionarSubMenu(new MenuListarVeiculosDisponiveis(gerenciadorDeVeiculo));
         menuDeVeiculos.adicionarSubMenu(new MenuVoltar());
         return menuDeVeiculos;
     }

@@ -1,23 +1,21 @@
 package br.com.ada.projeto.locatecar;
 
-import br.com.ada.projeto.locatecar.business.GerenciadorDeClientePessoaFisica;
-import br.com.ada.projeto.locatecar.business.GerenciadorDeClientePessoaJuridica;
-import br.com.ada.projeto.locatecar.business.GerenciadorDeTipoVeiculo;
-import br.com.ada.projeto.locatecar.business.GerenciadorDeVeiculo;
+import br.com.ada.projeto.locatecar.business.*;
+import br.com.ada.projeto.locatecar.business.desconto.FactoryDeCorrenteDeDesconto;
 import br.com.ada.projeto.locatecar.model.ClientePessoaFisica;
 import br.com.ada.projeto.locatecar.model.ClientePessoaJuridica;
+import br.com.ada.projeto.locatecar.persistence.AluguelRepository;
 import br.com.ada.projeto.locatecar.persistence.ClienteRepository;
 import br.com.ada.projeto.locatecar.persistence.TipoVeiculoRepository;
 import br.com.ada.projeto.locatecar.persistence.VeiculoRepository;
-import br.com.ada.projeto.locatecar.persistence.arquivo.ClienteRepositoryEmArquivo;
-import br.com.ada.projeto.locatecar.persistence.arquivo.ManipuladorDeArquivoComObjectIOStream;
-import br.com.ada.projeto.locatecar.persistence.arquivo.TipoDeVeiculoRepositoryEmArquivo;
-import br.com.ada.projeto.locatecar.persistence.arquivo.VeiculoRepositoryEmArquivo;
+import br.com.ada.projeto.locatecar.persistence.arquivo.*;
+import br.com.ada.projeto.locatecar.persistence.memoria.AluguelRepositoryEmMemoria;
 import br.com.ada.projeto.locatecar.persistence.memoria.ClienteRepositoryEmMemoria;
 import br.com.ada.projeto.locatecar.persistence.memoria.TipoDeVeiculoRepositoryEmMemoria;
 import br.com.ada.projeto.locatecar.persistence.memoria.VeiculoRepositoryEmMemoria;
 import br.com.ada.projeto.locatecar.view.Menu;
 import br.com.ada.projeto.locatecar.view.MenuGeralFactory;
+import br.com.ada.projeto.locatecar.view.aluguel.MenuDeAlugueisFactory;
 import br.com.ada.projeto.locatecar.view.cliente.pessoafisica.MenuDeClientesPessoaFisicaFactory;
 import br.com.ada.projeto.locatecar.view.cliente.pessoajuridica.MenuDeClientesPessoaJuridicaFactory;
 import br.com.ada.projeto.locatecar.view.veiculo.MenuDeVeiculosFactory;
@@ -43,7 +41,11 @@ public class LocateCar {
         GerenciadorDeClientePessoaJuridica gerenciadorDeClientePessoaJuridica = new GerenciadorDeClientePessoaJuridica(pessoaJuridicaRepository);
         MenuDeClientesPessoaJuridicaFactory menuDeClientesPessoaJuridicaFactory = new MenuDeClientesPessoaJuridicaFactory(gerenciadorDeClientePessoaJuridica);
 
-        Menu menuGeral = new MenuGeralFactory(menuDeVeiculosFactory, menuDeClientesPessoaFisicaFactory, menuDeClientesPessoaJuridicaFactory).create();
+        AluguelRepository aluguelRepository = new AluguelRepositoryEmArquivo(new ManipuladorDeArquivoComObjectIOStream("alugueis.txt"), new AluguelRepositoryEmMemoria());
+        GerenciadorDeAluguel gerenciadorDeAluguel = new GerenciadorDeAluguel(aluguelRepository, gerenciadorDeVeiculo, FactoryDeCorrenteDeDesconto.criarCorrenteDeDesconto());
+        MenuDeAlugueisFactory menuDeAlugueisFactory = new MenuDeAlugueisFactory(gerenciadorDeVeiculo, gerenciadorDeClientePessoaFisica, gerenciadorDeClientePessoaJuridica, gerenciadorDeAluguel);
+
+        Menu menuGeral = new MenuGeralFactory(menuDeVeiculosFactory, menuDeClientesPessoaFisicaFactory, menuDeClientesPessoaJuridicaFactory, menuDeAlugueisFactory).create();
         menuGeral.agir();
 
     }

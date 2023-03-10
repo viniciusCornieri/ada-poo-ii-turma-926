@@ -20,7 +20,7 @@ public abstract class CorrenteDeCalculoDeDesconto implements CalculadorDeDescont
 
     protected BigDecimal executaProximoCalculoDeDesconto(Aluguel aluguel) {
         if (proximaValidacaoDeDesconto != null) {
-            return this.calculaDesconto(aluguel);
+            return proximaValidacaoDeDesconto.calculaDesconto(aluguel);
         }
 
         return BigDecimal.ZERO;

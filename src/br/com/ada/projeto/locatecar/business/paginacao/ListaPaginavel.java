@@ -1,6 +1,6 @@
 package br.com.ada.projeto.locatecar.business.paginacao;
 
-import br.com.ada.projeto.biblioteca.business.exception.PaginaForaDosLimites;
+import br.com.ada.projeto.locatecar.business.exception.PaginaForaDosLimites;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

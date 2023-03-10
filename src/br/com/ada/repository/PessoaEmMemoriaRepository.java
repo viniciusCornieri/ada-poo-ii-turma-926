@@ -1,9 +1,9 @@
 package br.com.ada.repository;
 
 import br.com.ada.ordenacao.Pessoa;
-import br.com.ada.projeto.biblioteca.persistence.memoria.RepositorioEmMemoriaGenerico;
+import br.com.ada.projeto.locatecar.persistence.memoria.RepositorioEmMemoriaGenerico;
 
-public class PessoaEmMemoriaRepository extends RepositorioEmMemoriaGenerico<Pessoa> {
+public class PessoaEmMemoriaRepository extends RepositorioEmMemoriaGenerico<String, Pessoa> {
 
     public PessoaEmMemoriaRepository() {
         super();

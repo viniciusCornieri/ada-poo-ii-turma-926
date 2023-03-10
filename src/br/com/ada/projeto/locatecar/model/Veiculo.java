@@ -1,7 +1,11 @@
 package br.com.ada.projeto.locatecar.model;
 
+import java.io.Serial;
+
 public class Veiculo implements Entidade<String> {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
     private String placa;
     private String modelo;
     private boolean disponivel;

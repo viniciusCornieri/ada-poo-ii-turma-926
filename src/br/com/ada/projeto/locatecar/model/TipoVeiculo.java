@@ -1,9 +1,12 @@
 package br.com.ada.projeto.locatecar.model;
 
+import java.io.Serial;
 import java.math.BigDecimal;
 
 public class TipoVeiculo implements Entidade<String> {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
     private final String descricao;
 
     private BigDecimal tarifa;

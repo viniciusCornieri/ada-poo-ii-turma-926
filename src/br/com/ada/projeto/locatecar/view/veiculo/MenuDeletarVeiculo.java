@@ -1,6 +1,5 @@
 package br.com.ada.projeto.locatecar.view.veiculo;
 
-import br.com.ada.projeto.biblioteca.business.GerenciadorDeAutor;
 import br.com.ada.projeto.locatecar.business.GerenciadorDeVeiculo;
 import br.com.ada.projeto.locatecar.view.CapturadorDeEntrada;
 import br.com.ada.projeto.locatecar.view.Submenu;

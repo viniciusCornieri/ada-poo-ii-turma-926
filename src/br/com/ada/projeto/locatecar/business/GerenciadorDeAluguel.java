@@ -41,7 +41,7 @@ public class GerenciadorDeAluguel {
         return salvo;
     }
 
-    public Aluguel devolver(UUID idDoAluguel) {
+    public Aluguel devolver(UUID idDoAluguel, LocalDateTime dataDevolucao) {
 
         Aluguel aluguel = consultarPorId(idDoAluguel);
 
@@ -52,10 +52,14 @@ public class GerenciadorDeAluguel {
         if (StatusAluguel.ENCERRADO == aluguel.getStatus()) {
             throw new AluguelJaEncerradoException(aluguel);
         }
-        gerenciadorDeVeiculo.devolver(aluguel.getVeiculo());
-        aluguel.setDataDevolucao(LocalDateTime.now());
-        aluguel.setStatus(StatusAluguel.ENCERRADO);
 
+        if (aluguel.getDataRetirada().isAfter(dataDevolucao)) {
+            throw new IllegalArgumentException("Data de devolução deve ser posterior a data de retirada %s".formatted(aluguel.getDataRetirada()));
+        }
+
+        gerenciadorDeVeiculo.devolver(aluguel.getVeiculo());
+        aluguel.setStatus(StatusAluguel.ENCERRADO);
+        aluguel.setDataDevolucao(dataDevolucao);
         BigDecimal desconto = calculadorDeDesconto.calculaDesconto(aluguel);
         aluguel.setDesconto(desconto);
 

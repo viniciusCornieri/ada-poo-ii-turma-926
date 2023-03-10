@@ -2,12 +2,19 @@ package br.com.ada.projeto.locatecar.model;
 
 import br.com.ada.projeto.locatecar.business.exception.AluguelAindaEmAndamentoException;
 
+import java.io.Serial;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Aluguel implements Entidade<UUID> {
+    public static final int CASAS_DECIMAIS = 2;
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private UUID id;
 
     private Cliente cliente;
@@ -64,7 +71,7 @@ public class Aluguel implements Entidade<UUID> {
 
     public BigDecimal getValorBruto() {
         BigDecimal diarias = BigDecimal.valueOf(getDiarias());
-        return tarifaRegistrada.multiply(diarias);
+        return tarifaRegistrada.multiply(diarias).setScale(CASAS_DECIMAIS, RoundingMode.HALF_UP);
     }
 
     public void setDesconto(BigDecimal desconto) {
@@ -72,7 +79,7 @@ public class Aluguel implements Entidade<UUID> {
     }
 
     public BigDecimal getValorLiquido() {
-        return getValorBruto().subtract(desconto);
+        return getValorBruto().subtract(desconto).setScale(CASAS_DECIMAIS, RoundingMode.HALF_UP);
     }
 
     public Cliente getCliente() {
@@ -80,11 +87,15 @@ public class Aluguel implements Entidade<UUID> {
     }
 
     public BigDecimal getDesconto() {
-        return desconto;
+        return desconto.setScale(CASAS_DECIMAIS, RoundingMode.HALF_UP);
     }
 
     public boolean estaEmAndamento() {
         return StatusAluguel.EM_ANDAMENTO == status;
+    }
+
+    public LocalDateTime getDataRetirada() {
+        return dataRetirada;
     }
 
     @Override

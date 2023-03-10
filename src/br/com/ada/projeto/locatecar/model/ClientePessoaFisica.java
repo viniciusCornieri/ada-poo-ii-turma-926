@@ -1,7 +1,11 @@
 package br.com.ada.projeto.locatecar.model;
 
+import java.io.Serial;
+
 public class ClientePessoaFisica extends Cliente {
 
+    @Serial
+    private static final long serialVersionUID = 1L;
     private String cpf;
 
     public ClientePessoaFisica(String nome, String cpf) {
